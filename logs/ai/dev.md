@@ -4,7 +4,7 @@ Project Type: dev
 Last Updated: [Tue 2026-10-13 14:29]
 
 ## CURRENT STATE
-Revision 27b70e8 deployed successfully to the existing GitHub Pages URL. Hosted UI verified: broker navigation contains only Submission/Requested changes; assistant navigation contains only Submission/Evidence review. Submitted broker view has prominent review status and no intake discrepancy warnings. Role switching only uses the top control. No browser errors. Eighteen tests pass.
+Final update e6e28be deployed successfully. Live underwriting draft shows only Submission not received; no application fields, broker preparation steps, or received documents. Awaiting broker requests and returned-update verification were checked locally. All 22 tests pass.
 <!-- END CONTEXT_BLOCK -->
 
 ## CHANGE LOG
@@ -38,3 +38,8 @@ Revision 27b70e8 deployed successfully to the existing GitHub Pages URL. Hosted 
 **Type:** correction
 **Summary:** Underwriting starts with Submission not received before broker submission, with no application fields, document counts, or broker stepper. Initial review, Awaiting broker corrections dashboard, and Verify broker updates are distinct. Broker document rows support Replace/Remove/Upload in place; Upload new document adds a separate supporting file. Required document removal blocks submission until restored. Twenty-two tests and browser receipt/document/correction-return checks passed.
 **Impact:** Matches role-specific task ownership and document lifecycle.
+
+### [Tue 2026-10-13 15:23]
+**Type:** verification
+**Summary:** Final update e6e28be deployed successfully. Live underwriting draft shows only Submission not received; no application fields, broker preparation steps, or received documents. Awaiting broker requests and returned-update verification were checked locally. All 22 tests pass.
+**Impact:** Ready for the user to record the walkthrough.

@@ -6,6 +6,10 @@ _Last updated: [Tue 2026-10-13 14:29]_
 
 ## Log
 
+**[Tue 2026-10-13 15:23]** · Final update verified
+Final update e6e28be deployed successfully. Live underwriting draft shows only Submission not received; no application fields, broker preparation steps, or received documents. Awaiting broker requests and returned-update verification were checked locally. All 22 tests pass.
+
+
 **[Tue 2026-10-13 15:20]** · Document and underwriting-stage fixes
 Underwriting starts with Submission not received before broker submission, with no application fields, document counts, or broker stepper. Initial review, Awaiting broker corrections dashboard, and Verify broker updates are distinct. Broker document rows support Replace/Remove/Upload in place; Upload new document adds a separate supporting file. Required document removal blocks submission until restored. Twenty-two tests and browser receipt/document/correction-return checks passed.
 
