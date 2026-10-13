@@ -4,7 +4,7 @@ Project Type: dev
 Last Updated: [Tue 2026-10-13 14:29]
 
 ## CURRENT STATE
-Implementation and local desktop/390px checks completed. Publish revision and verify hosted role isolation next.
+Revision 27b70e8 deployed successfully to the existing GitHub Pages URL. Hosted UI verified: broker navigation contains only Submission/Requested changes; assistant navigation contains only Submission/Evidence review. Submitted broker view has prominent review status and no intake discrepancy warnings. Role switching only uses the top control. No browser errors. Eighteen tests pass.
 <!-- END CONTEXT_BLOCK -->
 
 ## CHANGE LOG
@@ -28,3 +28,8 @@ Implementation and local desktop/390px checks completed. Publish revision and ve
 **Type:** correction
 **Summary:** Implementation and local desktop/390px checks completed. Publish revision and verify hosted role isolation next.
 **Impact:** Resolves user-reported role and stage confusion.
+
+### [Tue 2026-10-13 15:02]
+**Type:** verification
+**Summary:** Revision 27b70e8 deployed successfully to the existing GitHub Pages URL. Hosted UI verified: broker navigation contains only Submission/Requested changes; assistant navigation contains only Submission/Evidence review. Submitted broker view has prominent review status and no intake discrepancy warnings. Role switching only uses the top control. No browser errors. Eighteen tests pass.
+**Impact:** User-requested role and hierarchy corrections are live.

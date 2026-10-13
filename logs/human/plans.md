@@ -6,6 +6,10 @@ _Last updated: [Tue 2026-10-13 14:29]_
 
 ## Log
 
+**[Tue 2026-10-13 15:02]** · Corrected prototype deployed
+Revision 27b70e8 deployed successfully to the existing GitHub Pages URL. Hosted UI verified: broker navigation contains only Submission/Requested changes; assistant navigation contains only Submission/Evidence review. Submitted broker view has prominent review status and no intake discrepancy warnings. Role switching only uses the top control. No browser errors. Eighteen tests pass.
+
+
 **[Tue 2026-10-13 14:59]** · Role and hierarchy correction
 Implementation and local desktop/390px checks completed. Publish revision and verify hosted role isolation next.
 
