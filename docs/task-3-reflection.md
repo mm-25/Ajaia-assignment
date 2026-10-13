@@ -1,0 +1,3 @@
+# Task 3 · AI use and human judgment
+
+I used AI to help synthesize the interviews and logs, explore design directions, and write the prototype code. I kept the product decisions with me, especially how the broker and underwriting assistant share the submission. In the proposed flow, assistants still verify flagged discrepancies, approve correction requests, and review returned changes. AI initially suggested putting the discrepancy details into an email, which felt like it would scatter the conversation again, so I chose to keep those details in the shared portal and use email only as a notification.
