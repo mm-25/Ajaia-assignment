@@ -43,3 +43,14 @@ test('rejected partial correction is republished alongside an existing request',
 test('early broker correction is not attributed to an assistant request',()=>{
  const s=transition(createSubmission(),'correct',{id:'limit',method:'application'});assert.equal(Boolean(s.issues[0].requestPublished),false);
 });
+test('broker saves the application value entered in the correction form',()=>{
+ const s=transition(createSubmission(),'correct',{id:'address',method:'application',value:'150 Maple Street'});
+ assert.equal(s.issues[1].application,'150 Maple Street');assert.equal(s.issues[1].document,'148 Maple Street');assert.equal(s.issues[1].status,'updated');
+});
+test('updated evidence that still differs cannot be verified as matching',()=>{
+ let s=createSubmission();s=transition(s,'correct',{id:'address',method:'application',value:'150 Maple Street'});s=transition(s,'submit');s=transition(s,'verify',{id:'address'});assert.equal(s.issues[1].status,'updated');
+});
+test('a message on a verified issue does not reopen the discrepancy',()=>{
+ let s=createSubmission();s=transition(s,'submit');for(const id of ['limit','address'])s=transition(s,'confirm',{id});s=transition(s,'publish');s=transition(s,'correct',{id:'limit',method:'document'});s=transition(s,'return');s=transition(s,'verify',{id:'limit'});s=transition(s,'resume');s=transition(s,'help',{id:'limit',message:'Thank you for confirming.'});
+ assert.equal(s.issues[0].status,'resolved');assert.equal(s.issues[0].messages.length,1);
+});

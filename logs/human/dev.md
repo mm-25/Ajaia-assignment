@@ -6,6 +6,10 @@ _Last updated: [Tue 2026-10-13 14:29]_
 
 ## Log
 
+**[Tue 2026-10-13 14:59]** · Role and hierarchy correction
+Added portal.mjs for explicit roles and role-specific screen/action permissions. Submit, return and publish preserve identity. Added regressions for broker-only correction, assistant-only findings, custom application values and verified issue messages. Eighteen tests pass; browser complete correction and verification loop passed.
+
+
 **[Tue 2026-10-13 14:34]** · Delivered
 GitHub Pages build succeeded. Hosted URL returns HTTP 200 and renders the interactive application; hosted submit action verified without browser errors. Task2 summary and prototype link verified in Google Doc; existing Task3 edits preserved.
 

@@ -13,19 +13,19 @@ export function transition(input,action,p={}){
  case 'submit': if(s.status==='draft'){s.status='review';log('Maya submitted the application. Anika can now review the evidence.');}break;
  case 'confirm':if(s.status==='review'&&i&&i.status==='possible'){i.status='confirmed';log(`Anika confirmed the ${i.title.toLowerCase()} discrepancy.`);}break;
  case 'dismiss':if(s.status==='review'&&i&&['possible','confirmed'].includes(i.status)){i.status='dismissed';i.reason=p.reason||'Source verified; no correction required.';log(`Anika dismissed the ${i.title.toLowerCase()} flag: ${i.reason}`);}break;
- case 'publish':if(canPublish(s)){s.status='changes';s.issues.forEach(i=>{if(i.status==='confirmed'){i.status='requested';i.requestPublished=true;i.instruction=p.instructions?.[i.id]||i.instruction;}});log('Anika published a correction request. A demo email notification links Maya to this portal.');}break;
+ case 'publish':if(canPublish(s)){s.status='changes';s.issues.forEach(i=>{if(i.status==='confirmed'){i.status='requested';i.requestPublished=true;i.instruction=p.instructions?.[i.id]||i.instruction;}});log('Anika published a correction request. Maya was notified to review the changes in the portal.');}break;
  case 'correct':if(i&&['draft','changes'].includes(s.status)&&['possible','requested','help','updated'].includes(i.status)){
  i.previousApplication=i.application;i.previousDocument=i.document;
- if(p.method==='document'){i.document=i.application;i.version++;}else{i.application=i.document;}
+ if(p.method==='document'){i.document=i.application;i.version++;}else{i.application=p.value===undefined?i.document:p.value;}
  i.status='updated';i.method=p.method;i.correctedEarly=s.status==='draft';
  
- log(`Maya ${p.method==='document'?'uploaded a sample corrected '+i.source.toLowerCase():'updated the application '+i.title.toLowerCase()}. ${s.status==='draft'?'Ready for assistant review.':'Awaiting assistant verification.'}`);
+ log(`Maya ${p.method==='document'?'uploaded a corrected '+i.source.toLowerCase():'updated the application '+i.title.toLowerCase()}. ${s.status==='draft'?'Ready for assistant review.':'Awaiting assistant verification.'}`);
  }break;
- case 'help':if(i){i.status=s.status==='draft'?'possible':'help';i.messages.push({by:'Maya',text:p.message});log(`Maya asked for help with ${i.title.toLowerCase()}.`);}break;
+ case 'help':if(i){if(!['resolved','dismissed','updated'].includes(i.status))i.status=s.status==='draft'?'possible':'help';i.messages.push({by:'Maya',text:p.message});log(`Maya asked for help with ${i.title.toLowerCase()}.`);}break;
  case 'reply':if(i){i.messages.push({by:'Anika',text:p.message});log(`Anika replied about ${i.title.toLowerCase()}.`);}break;
  case 'resume':if(s.status==='review'&&s.issues.some(i=>['requested','help'].includes(i.status))){s.status='changes';log('Anika returned the remaining open requests to Maya.');}break;
  case 'return':if(s.status==='changes'&&s.issues.some(i=>i.status==='updated'||i.status==='help')){s.status='review';log('Maya sent the updates for review. Outstanding issues remain open.');}break;
- case 'verify':if(s.status==='review'&&i&&['updated','dismissed'].includes(i.status)){i.status='resolved';log(`Anika verified the ${i.title.toLowerCase()} evidence.`);}break;
+ case 'verify':if(s.status==='review'&&i&&['updated','dismissed'].includes(i.status)&&(i.status==='dismissed'||i.application===i.document)){i.status='resolved';log(`Anika verified the ${i.title.toLowerCase()} evidence.`);}break;
  case 'reopen':if(s.status==='review'&&i){i.status='possible';log(`Anika reopened ${i.title.toLowerCase()} for review.`);}break;
  case 'checklist':if(s.status==='review')s.checklist=!s.checklist;break;
  case 'complete':if(canComplete(s)){s.status='complete';log('Anika completed the submission review. Underwriting decision remains separate.');}break;
