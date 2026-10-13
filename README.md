@@ -35,3 +35,6 @@ node --check app.mjs
 Workflow tests cover publication gating, returned correction verification, checklist completion, help, new versions reopening review, early corrections, mixed outcomes, and partial returns.
 
 Static GitHub Pages deployment serves the repository root. Inter is loaded from Google Fonts with a local system-font fallback.
+
+## Role-specific receipt and document management
+Underwriting sees no draft data before receipt. On publication, its evidence workspace changes to an Awaiting broker corrections summary. Returned updates open Verify broker updates. The broker manages each existing document through its own Replace/Remove controls; Upload new document adds a separate file. Removing a required document prevents submission until that document slot is restored.

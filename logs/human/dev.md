@@ -6,6 +6,10 @@ _Last updated: [Tue 2026-10-13 14:29]_
 
 ## Log
 
+**[Tue 2026-10-13 15:20]** · Document and underwriting-stage fixes
+Underwriting starts with Submission not received before broker submission, with no application fields, document counts, or broker stepper. Initial review, Awaiting broker corrections dashboard, and Verify broker updates are distinct. Broker document rows support Replace/Remove/Upload in place; Upload new document adds a separate supporting file. Required document removal blocks submission until restored. Twenty-two tests and browser receipt/document/correction-return checks passed.
+
+
 **[Tue 2026-10-13 15:02]** · Corrected prototype deployed
 Revision 27b70e8 deployed successfully to the existing GitHub Pages URL. Hosted UI verified: broker navigation contains only Submission/Requested changes; assistant navigation contains only Submission/Evidence review. Submitted broker view has prominent review status and no intake discrepancy warnings. Role switching only uses the top control. No browser errors. Eighteen tests pass.
 

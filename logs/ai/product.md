@@ -23,3 +23,8 @@ User feedback: separate broker and assistant navigation. Broker has Submission a
 **Type:** correction
 **Summary:** User feedback: separate broker and assistant navigation. Broker has Submission and Requested changes; assistant has Submission and Evidence review. Only top preview switch changes role. Functional titles, prominent blue review/amber change/green completion status. Removed sidebar explanation, shared activity navigation, human-review sidecard and crossrole footer links. Broker corrections use source bookmarks with update, replacement and question actions.
 **Impact:** Resolves user-reported role and stage confusion.
+
+### [Tue 2026-10-13 15:20]
+**Type:** correction
+**Summary:** Underwriting starts with Submission not received before broker submission, with no application fields, document counts, or broker stepper. Initial review, Awaiting broker corrections dashboard, and Verify broker updates are distinct. Broker document rows support Replace/Remove/Upload in place; Upload new document adds a separate supporting file. Required document removal blocks submission until restored. Twenty-two tests and browser receipt/document/correction-return checks passed.
+**Impact:** Matches role-specific task ownership and document lifecycle.

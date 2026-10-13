@@ -54,3 +54,13 @@ test('a message on a verified issue does not reopen the discrepancy',()=>{
  let s=createSubmission();s=transition(s,'submit');for(const id of ['limit','address'])s=transition(s,'confirm',{id});s=transition(s,'publish');s=transition(s,'correct',{id:'limit',method:'document'});s=transition(s,'return');s=transition(s,'verify',{id:'limit'});s=transition(s,'resume');s=transition(s,'help',{id:'limit',message:'Thank you for confirming.'});
  assert.equal(s.issues[0].status,'resolved');assert.equal(s.issues[0].messages.length,1);
 });
+test('removing a required document blocks submission until that exact slot is uploaded',()=>{
+ let s=transition(createSubmission(),'remove-document',{id:'limit'});assert.equal(s.documents.some(d=>d.id==='limit'),false);assert.equal(s.issues[0].missing,true);s=transition(s,'submit');assert.equal(s.status,'draft');
+ s=transition(s,'upload-document',{id:'limit'});assert.equal(s.documents.some(d=>d.id==='limit'),true);assert.equal(s.issues[0].missing,false);s=transition(s,'submit');assert.equal(s.status,'review');
+});
+test('new upload adds a document without replacing existing documents',()=>{
+ const s=transition(createSubmission(),'add-document',{name:'Additional endorsement.pdf'});assert.equal(s.documents.length,4);assert.equal(s.documents[0].name,'Certificate of insurance');assert.equal(s.documents[3].name,'Additional endorsement.pdf');
+});
+test('returned corrections identify the verification stage separately',()=>{
+ let s=transition(createSubmission(),'submit');for(const id of ['limit','address'])s=transition(s,'confirm',{id});s=transition(s,'publish');s=transition(s,'correct',{id:'limit',method:'document'});s=transition(s,'return');assert.equal(s.reviewRound,'updates');
+});

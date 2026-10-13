@@ -30,3 +30,6 @@ test('assistant cannot alter broker values',()=>{
  let s=transition(createSubmission(),'submit');for(const id of ['limit','address'])s=transition(s,'confirm',{id});s=transition(s,'publish');
  assert.deepEqual(performAction(s,createPortal('assistant'),'correct',{id:'limit',method:'application'}).submission,s);
 });
+test('underwriting distinguishes receipt, evidence review, waiting, and returned updates',async()=>{
+ const {underwritingStage}=await import('../portal.mjs');let s=createSubmission();assert.equal(underwritingStage(s),'not_received');s=transition(s,'submit');assert.equal(underwritingStage(s),'review');for(const id of ['limit','address'])s=transition(s,'confirm',{id});s=transition(s,'publish');assert.equal(underwritingStage(s),'awaiting_broker');s=transition(s,'correct',{id:'limit',method:'document'});s=transition(s,'return');assert.equal(underwritingStage(s),'verify_updates');
+});
